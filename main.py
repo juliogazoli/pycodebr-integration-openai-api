@@ -8,12 +8,17 @@ client = OpenAI(
 response = client.chat.completions.create(
     model='gpt-3.5-turbo',
     messages=[
-        # {'role': 'system', 'content': 'Você é um assistente virtual especializado em carro e mecânica automotiva. Dê respostas técnicas sobre mecânica.'},
-        # {'role': 'user', 'content': 'Fale sobre o Chevrolet Cobalt'},
-
-        {'role': 'system', 'content': 'Dê respostas técnicas sobre programação. Se comporte como um programador Python experiente, especialista de projetos e arquitetura limpa.'},
-        {'role': 'user', 'content': 'Me mostre como posso fazer um projeto Django com as melhores boas práticas.'},
+        {
+            'role': 'system',
+            'content': 'Você será um tradutor de textos de português para inglês. Apenas traduza e responda a tradução do texto que você receber.'
+        },
+        {
+            'role': 'user',
+            'content': 'O livro está na mesa.'
+        },
     ],
+    # max_tokens=150,
+    # temperature=0.2,
 )
 
 print(response.choices[0].message.content)
